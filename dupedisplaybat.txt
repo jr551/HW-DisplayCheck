@@ -1,0 +1,67 @@
+
+echo off
+cls
+
+echo If you not not want cloned displays
+echo then make a file called h:\dontclone.txt
+echo .
+
+cls
+
+del %temp%\HWS_DisplayCheck.exe
+copy /Y \\srv-fs02\app$\HWS_DisplayCheck.exe "%temp%\HWS_DisplayCheck.exe"
+cls
+setlocal enabledelayedexpansion
+cls
+set nameSearch=RM13
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+   echo RM13 exiting..
+	exit
+) 
+cls
+set nameSearch=OFF
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+   echo RM13 exiting..
+	exit
+) 
+cls
+set nameSearch=HOL
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+   echo HOL exiting..
+	exit
+) 
+cls
+set nameSearch=HEAD
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+   echo HEAD exiting..
+	exit
+) 
+cls
+set nameSearch=FIN
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+   echo Finance pc - Exiting..
+	exit
+)
+cls
+set nameSearch=TPC
+set checkComputerName=!computername:%nameSearch%=!
+if "%checkComputerName%" NEQ "%computername%" (
+  echo TPC
+        IF EXIST "h:\dontclone.txt" (
+         cls
+        
+      ) ELSE (
+        
+         cls
+      	 start /MIN "" "%temp%\HWS_DisplayCheck.exe"
+      )
+
+) else (
+  echo Not Teaching Machine.
+)
+cls
